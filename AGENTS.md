@@ -102,8 +102,10 @@ Exact tokens (colors, fonts, spacing) should be finalized and recorded in `globa
 - [x] Next.js project moved into `website/`; `design-references/` and docs stay at the root.
 - [x] This onboarding doc created.
 - [ ] Confirm content (bio, experience, projects, links) with the owner.
-- [ ] Define design tokens + fonts.
-- [ ] Build sections.
+- [x] Template code removed; design tokens, text styles (`heading-1`, `body-3`, …) and motion in `website/src/app/globals.css`.
+- [x] Hero is image only (owner's request): full screen art-directed background, wide photo ≥1024px, tall photo below. No visible text or nav; an `sr-only` h1 keeps it accessible. Content in `website/src/data/site.ts`.
+- [ ] Contact email still TODO (`ContactButton` is kept for later sections and renders disabled until set).
+- [ ] Remaining sections (About, Skills, Experience, Projects, tagline reveal, Contact, Footer).
 - [ ] Polish, responsive QA, SEO metadata, deploy (likely Vercel).
 
 ## 8. Open questions (for the owner)
@@ -120,4 +122,6 @@ Exact tokens (colors, fonts, spacing) should be finalized and recorded in `globa
 |---|---|
 | 2026-11-25 | Stack: Next.js 16 + React 19 + TypeScript + Tailwind 4, npm. Single landing page. |
 | 2026-11-25 | Layout: app lives in `website/`; root holds docs + `design-references/`. Git repo is at the root. |
+| 2026-11-25 | Design rules: follow the `landing-page-design` skill (Geist only, Tailwind scale, spacing tokens, no bg gradients, `cubic-bezier(0.22,1,0.36,1)` motion). Build section by section. |
+| 2026-11-25 | Hero: owner wants the image alone as the background, no overlaid text or nav for now. Hero is `min-h-svh`. |
 | 2026-11-25 | Visual direction taken from "Building My Own Legacy" references (warm sand + espresso + copper, condensed display + script). |
