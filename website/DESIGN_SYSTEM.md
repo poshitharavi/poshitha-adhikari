@@ -93,6 +93,11 @@ Keep the script inside the same heading so screen readers read one sentence.
 | `Eyebrow` | `as` | Bark, tracked caps |
 | `Text` | `size` lg / md / sm, `as` | Bark, `text-pretty` |
 | `Quote` | children (use `<br />` for line breaks) | Poster quote with `“ ”` ornament rules |
+| `SplitReveal` | `words`, `startMs`, `className` | Letters slide up from behind each word with a small tilt (40ms stagger); letters lift on hover. Parent `aria-hidden`; give screen readers the full text. `splitRevealEndMs()` chains later reveals |
+| `ScrollCue` (`components/scroll-cue.tsx`) | `label`, `style` | Outlined circle with a looping down arrow + label in copper `{ }` brackets |
+| `SiteHeader` (`components/site-header.tsx`) | none | Transparent header on the hero (not sticky): only the `PillButton` "Download CV", top right |
+| `PillButton` | `href`, `download`, children | Outlined hairline pill, `caps` label, `Plus` icon. Hover: label rolls up, "+" turns 90° |
+| `Plus` | `className` | Drawn "+" mark (pill button icon) |
 | `Button` | `href`, `variant` primary / secondary, `size` md / sm | No `href` renders disabled, so there are no dead links. Full hover, active and focus states |
 
 ## Imagery
@@ -100,3 +105,16 @@ Keep the script inside the same heading so screen readers read one sentence.
 - Hero photos live in `public/images/` (`hero-pale-desktop.jpg` from 1024px, `hero-pale-mobile.jpg` below), served with art direction via `getImageProps`.
 - Text over photos goes in the empty wall above the figure, never over the figure's head.
 - The originals show a sports-team logo on the cap. Prefer a logo-free edit before launch.
+
+## Motion vocabulary (references: Lusion, GSAP)
+
+Taken from the Lusion and GSAP style references (refero.design) the owner likes. Their design notes have no motion specs, so motion follows the patterns those sites are known for, on our `--ease-out-expo` curve.
+
+- `caps` text style: 14px, weight 500, uppercase, -0.02em. Header, pill buttons, scroll cue.
+- `.mask-reveal`: text slides up from behind an invisible edge (900ms). Wrap the element; stagger with `--reveal-delay`.
+- `.write-on`: a script word writes itself on left to right like a pen stroke (1.2s, transform only). Hero "Hi, I'm".
+- `SplitReveal`: hero name, letter by letter (Lusion mask + GSAP style per letter split).
+- Pill hover: label roll + "+" quarter turn. Links: underline draws in.
+- `arrow-loop`: scroll cue arrow slides down through its circle (2.2s). `{ }` brackets are the GSAP signature for labels and section eyebrows.
+- All of it falls back to a plain fade (or nothing) under reduced motion.
+- Kept from our brand, not taken from the references: colours, Anton / script / Montserrat fonts.

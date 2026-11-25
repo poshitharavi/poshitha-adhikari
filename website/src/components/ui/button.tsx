@@ -2,6 +2,8 @@ type Props = {
   href?: string | null;
   variant?: "primary" | "secondary";
   size?: "md" | "sm";
+  /** File name to save as. Makes the link download instead of navigate. */
+  download?: string;
   className?: string;
   children: React.ReactNode;
 };
@@ -32,6 +34,7 @@ export function Button({
   href,
   variant = "primary",
   size = "md",
+  download,
   className = "",
   children,
 }: Props) {
@@ -48,6 +51,7 @@ export function Button({
   return (
     <a
       href={href}
+      download={download}
       className={`${cls} ${hovers[variant]} hover:-translate-y-0.5 active:translate-y-0 active:scale-98`}
     >
       {children}

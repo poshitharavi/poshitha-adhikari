@@ -120,6 +120,16 @@ body {
   font-weight: 600;
 }
 
+/* Caps: uppercase interface labels (header, pill buttons, scroll cue).
+   Lusion style: medium weight, slightly tight tracking. */
+@utility caps {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
 /* Buttons */
 @utility button-md {
   font-size: var(--text-base);
@@ -154,6 +164,128 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal {
+    animation-name: reveal-fade;
+  }
+}
+
+/* Mask reveal (Lusion style): text slides up from behind an invisible edge.
+   Wrap the text in .mask-reveal; its first child moves. Stagger with --reveal-delay. */
+@keyframes mask-up {
+  from {
+    transform: translateY(110%);
+  }
+}
+/* In the components layer so utilities (flex, inline-flex) on the child still win. */
+@layer components {
+  .mask-reveal {
+    overflow: hidden;
+  }
+  .mask-reveal > * {
+    display: block;
+    animation: mask-up 900ms var(--ease-out-expo) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-reveal > * {
+    animation-name: reveal-fade;
+  }
+}
+
+/* Split reveal (Lusion mask + GSAP style per letter): each letter slides up from
+   behind its word's edge with a small tilt, staggered by --d. See ui/split-reveal.tsx. */
+@keyframes char-up {
+  from {
+    transform: translateY(110%) rotate(8deg);
+  }
+}
+@layer components {
+  .split-word {
+    display: inline-block;
+    overflow: hidden;
+    padding-top: 0.1em; /* room for the hover lift */
+    margin-top: -0.1em;
+    vertical-align: top;
+  }
+}
+.split-char {
+  display: inline-block;
+  transform-origin: 0% 100%;
+  animation: char-up 900ms var(--ease-out-expo) both;
+  animation-delay: var(--d);
+}
+.split-char > span {
+  display: inline-block;
+  transition: transform 500ms var(--ease-out-expo);
+}
+@media (hover: hover) {
+  .split-char > span:hover {
+    transform: translateY(-8%);
+  }
+}
+
+/* Scroll cue arrow: slides down out of its circle and back in from the top. */
+@keyframes arrow-loop {
+  0% {
+    transform: translateY(-160%);
+  }
+  35%,
+  65% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(160%);
+  }
+}
+.arrow-loop {
+  animation: arrow-loop 2200ms var(--ease-out-expo) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split-char {
+    animation-name: reveal-fade;
+  }
+  .split-char > span {
+    transition: none;
+  }
+  .arrow-loop {
+    animation: none;
+  }
+}
+
+/* Write on: a script word appears left to right like a pen stroke.
+   The outer box slides in while the text slides the opposite way, so it reads as a wipe.
+   Transform only. Side padding keeps the script's swashes inside the clip. */
+@keyframes write-outer {
+  from {
+    transform: translateX(-100%);
+  }
+}
+@keyframes write-inner {
+  from {
+    transform: translateX(100%);
+  }
+}
+.write-on {
+  display: inline-block;
+  /* Clip sideways only, so loops above and below the line stay visible and the height is unchanged. */
+  overflow-x: clip;
+  overflow-y: visible;
+  margin-inline: -0.3em;
+  animation: write-outer 1200ms var(--ease-out-expo) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+.write-on > span {
+  display: inline-block;
+  padding-inline: 0.3em;
+  animation: write-inner 1200ms var(--ease-out-expo) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .write-on,
+  .write-on > span {
     animation-name: reveal-fade;
   }
 }

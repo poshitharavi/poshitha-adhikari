@@ -34,7 +34,7 @@ The landing page is one scrolling page. This doc lists every section, in order, 
 ### 1. Hero
 - **Job:** who Poshitha is and the mood of the site, in five seconds.
 - **Content:** full screen photo (art directed desktop / mobile), headline in the signature composition (script word over display headline).
-- **Status:** built with sample copy. **The owner will redesign the photo and headline.** Don't change it without the owner.
+- **Status:** built. "Hi, I'm" writes itself on like a pen stroke, the name builds letter by letter, role slides up, `{ Scroll to get to know me }` cue with a looping arrow at the bottom. Header: only the outlined "Download CV" pill, top right (old CV for now). No contact button or side quotes (owner removed them). Facts come from the owner's career history. Don't change it without the owner.
 
 ### 2. About
 - **Job:** the person behind the work: why Poshitha builds, how they think, what kind of engineer they are.
@@ -64,7 +64,7 @@ The landing page is one scrolling page. This doc lists every section, in order, 
 ### 7. Principles
 - **Job:** give the page character and carry the poster theme. Also serves as the large tagline moment required by the design rules (words light up one by one on scroll).
 - **Content:** poster style quotes and one big statement.
-- **Status:** not started. Sample quotes exist in the hero data. **Needs from owner:** final wording.
+- **Status:** not started. **Needs from owner:** final wording.
 
 ### 8. Contact
 - **Job:** turn interest into a message.

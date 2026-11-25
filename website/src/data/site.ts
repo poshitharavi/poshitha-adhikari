@@ -6,21 +6,25 @@ export const site = {
   shortName: "Poshitha",
   role: "Senior full stack engineer",
 
-  // TODO: public contact email. While empty, contact buttons render disabled.
-  email: "",
+  // From the owner's CV. Confirm this is the address to publish.
+  email: "raviposhitha@gmail.com",
+
+  // Old CV for now; replace the file (same name) when the new one is ready.
+  cv: {
+    href: "/cv/poshitha-adhikari-cv.pdf",
+    fileName: "Poshitha-Adhikari-CV.pdf",
+    label: "Download CV",
+  },
 
   hero: {
-    // SAMPLE COPY to preview the design system. Replace with final wording.
-    // Reads as one sentence: "Building software that lasts".
-    script: "Building",
-    // Each entry is one line, broken where the thought breaks.
-    display: ["Software", "that lasts"],
-    quotes: {
-      left: ["Clean code today.", "Fewer fires tomorrow."],
-      right: ["Systems are built", "one commit at a time."],
-    },
-    cta: "Start a conversation",
+    // Owner chose ideas 2 + 3: name as the headline.
+    greeting: "Hi, I'm",
+    name: ["Poshitha", "Adhikari"],
+    // Two parts: one line with a dot on desktop, stacked on phones.
+    role: ["Senior full stack engineer", "Fintech & blockchain"],
+    scrollCue: "Scroll to get to know me",
   },
+
 
   meta: {
     title: "Poshitha Adhikari · Senior full stack engineer",

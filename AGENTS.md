@@ -84,7 +84,7 @@ Live reference page: `/style-guide` (noindex) shows fonts, script alternatives a
 
 **The section list, order, purpose and status live in [`docs/sections.md`](docs/sections.md). Read it before building or reordering any section.**
 
-Short version: Hero (owner redesigning) → About → Work → Experience → Skills → Beyond the code → Principles → Contact → Footer. Primary audience is recruiters; the goal is job enquiries.
+Short version: Hero → About → Work → Experience → Skills → Beyond the code → Principles → Contact → Footer. Primary audience is recruiters; the goal is job enquiries.
 
 ## 6. Working rules for agents
 
@@ -104,9 +104,9 @@ Short version: Hero (owner redesigning) → About → Work → Experience → Sk
 - [x] This onboarding doc created.
 - [ ] Confirm content (bio, experience, projects, links) with the owner.
 - [x] Template code removed; design tokens, text styles (`heading-1`, `body-3`, …) and motion in `website/src/app/globals.css`.
-- [x] Hero: full screen art-directed background (wide photo ≥1024px, tall photo below) with poster-style SAMPLE copy (script "Building" + display "Software that lasts", side quotes on desktop). Copy in `website/src/data/site.ts` is placeholder, awaiting final wording. No nav or CTA yet.
-- [x] Design system: tokens, text styles, `ui/` components (Display, Script, Eyebrow, Text, Quote, Button), `DESIGN_SYSTEM.md`, `/style-guide`.
-- [ ] Contact email still TODO (`ContactButton` is kept for later sections and renders disabled until set).
+- [x] Hero: full screen art-directed background (wide photo ≥1024px, tall photo below). Copy: "Hi, I'm" writes itself on like a pen stroke, the name builds letter by letter (`ui/split-reveal.tsx`), role slides up after, `{ Scroll to get to know me }` cue with a looping arrow (`components/scroll-cue.tsx`). Header holds only the outlined "Download CV" pill, top right (`components/site-header.tsx`; file `website/public/cv/poshitha-adhikari-cv.pdf`, old CV for now). No contact button or side quotes (owner removed them). Copy lives in `website/src/data/site.ts`.
+- [x] Design system: tokens, text styles, `ui/` components (Display, Script, Eyebrow, Text, Quote, Button, PillButton), `DESIGN_SYSTEM.md`, `/style-guide`.
+- [ ] Contact email set to the CV address; owner to confirm it is the one to publish.
 - [x] Section plan documented in `docs/sections.md`.
 - [ ] Remaining sections (About, Work, Experience, Skills, Beyond the code, Principles, Contact, Footer).
 - [ ] Polish, responsive QA, SEO metadata, deploy (likely Vercel).
@@ -115,7 +115,7 @@ Short version: Hero (owner redesigning) → About → Work → Experience → Sk
 
 - Full display name, title, location, and the one-line tagline.
 - Experience history, key projects (with links/outcomes), tech stack list.
-- Contact links (email, LinkedIn, GitHub) and CV file.
+- Contact links (email, LinkedIn, GitHub). Updated CV to replace the old one in `website/public/cv/` (the old one lists referees' phone numbers and emails; remove them before going live).
 - Should the hero use the reference photo (is it the owner?), and is a logo-free edit available?
 - Domain + hosting preference.
 
@@ -131,3 +131,6 @@ Short version: Hero (owner redesigning) → About → Work → Experience → Sk
 | 2026-11-25 | Design system established (`website/DESIGN_SYSTEM.md`). Token change = update `globals.css` + doc + `/style-guide` in the same commit. |
 | 2026-11-25 | Audience: recruiters first (goal: job enquiries), plus anyone wanting to know Poshitha personally. Adds a "Beyond the code" lifestyle section. Hero photo + headline will be redesigned by the owner. |
 | 2026-11-25 | Visual direction taken from "Building My Own Legacy" references (warm sand + espresso + copper, condensed display + script). |
+| 2026-11-25 | Hero copy: name as headline plus role line; owner removed the button and side quotes. Facts come from the owner's career history, never invented. |
+| 2026-11-25 | Motion and chrome follow the Lusion and GSAP references (mask reveals, pill text roll, "+" marks, outlined pills). Brand colours and fonts stay. See DESIGN_SYSTEM.md "Motion vocabulary". |
+| 2026-11-26 | Tried the landonorris.com fonts (Mona Sans + Gloock as a stand in for Brier); owner reverted. Brand fonts stay Anton, Mrs Saint Delafield, Montserrat. |
