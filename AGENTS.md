@@ -80,16 +80,11 @@ The references define the mood: **"Building My Own Legacy"** — quiet disciplin
 
 Live reference page: `/style-guide` (noindex) shows fonts, script alternatives and colour swatches.
 
-## 5. Planned page structure (draft — confirm with the owner)
+## 5. Page sections
 
-1. **Hero** — name, role ("Senior Full-Stack Engineer"), one-line value statement, CTA, legacy-style imagery.
-2. **About** — short story / philosophy (discipline, craft, long-term thinking).
-3. **Skills / Stack** — grouped (frontend, backend, cloud/devops, data).
-4. **Experience** — timeline of roles and impact.
-5. **Selected Projects** — 3–6 case-study cards with outcomes.
-6. **Quotes / Principles** strip — echoes the poster quotes.
-7. **Contact** — email, socials, CV download.
-8. **Footer.**
+**The section list, order, purpose and status live in [`docs/sections.md`](docs/sections.md). Read it before building or reordering any section.**
+
+Short version: Hero (owner redesigning) → About → Work → Experience → Skills → Beyond the code → Principles → Contact → Footer. Primary audience is recruiters; the goal is job enquiries.
 
 ## 6. Working rules for agents
 
@@ -112,7 +107,8 @@ Live reference page: `/style-guide` (noindex) shows fonts, script alternatives a
 - [x] Hero: full screen art-directed background (wide photo ≥1024px, tall photo below) with poster-style SAMPLE copy (script "Building" + display "Software that lasts", side quotes on desktop). Copy in `website/src/data/site.ts` is placeholder, awaiting final wording. No nav or CTA yet.
 - [x] Design system: tokens, text styles, `ui/` components (Display, Script, Eyebrow, Text, Quote, Button), `DESIGN_SYSTEM.md`, `/style-guide`.
 - [ ] Contact email still TODO (`ContactButton` is kept for later sections and renders disabled until set).
-- [ ] Remaining sections (About, Skills, Experience, Projects, tagline reveal, Contact, Footer).
+- [x] Section plan documented in `docs/sections.md`.
+- [ ] Remaining sections (About, Work, Experience, Skills, Beyond the code, Principles, Contact, Footer).
 - [ ] Polish, responsive QA, SEO metadata, deploy (likely Vercel).
 
 ## 8. Open questions (for the owner)
@@ -133,4 +129,5 @@ Live reference page: `/style-guide` (noindex) shows fonts, script alternatives a
 | 2026-11-25 | Hero: owner wants the image alone as the background, no overlaid text or nav for now. Hero is `min-h-svh`. |
 | 2026-11-25 | Fonts and colours taken from the poster images (owner's request). This overrides the landing-page-design skill's "one typeface / Geist" rule: three fonts are intentional. Script font may still change (alternatives on `/style-guide`). |
 | 2026-11-25 | Design system established (`website/DESIGN_SYSTEM.md`). Token change = update `globals.css` + doc + `/style-guide` in the same commit. |
+| 2026-11-25 | Audience: recruiters first (goal: job enquiries), plus anyone wanting to know Poshitha personally. Adds a "Beyond the code" lifestyle section. Hero photo + headline will be redesigned by the owner. |
 | 2026-11-25 | Visual direction taken from "Building My Own Legacy" references (warm sand + espresso + copper, condensed display + script). |
