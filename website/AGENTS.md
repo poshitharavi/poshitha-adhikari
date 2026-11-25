@@ -2,6 +2,8 @@
 
 Project mission, status, design direction and working rules live in the root doc: **[`../AGENTS.md`](../AGENTS.md)** — read it first.
 
+Design system (tokens, fonts, components, rules): **[`DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md)**.
+
 <!-- BEGIN:nextjs-agent-rules -->
 
 ## This is NOT the Next.js you know

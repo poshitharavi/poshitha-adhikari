@@ -1,54 +1,126 @@
 @import "tailwindcss";
 
-/* ---------- Design tokens ---------- */
+/*
+ * DESIGN SYSTEM: single source of truth for tokens and text styles.
+ * Docs: website/DESIGN_SYSTEM.md  ·  Live reference: /style-guide
+ * Change a token here, then update the docs and the style guide in the same commit.
+ */
+
+/* ---------- 1. Tokens ---------- */
 @theme inline {
-  --font-sans: var(--font-geist-sans);
+  /* Fonts (matched to the "Building My Own Legacy" posters, loaded in app/layout.tsx) */
+  --font-sans: var(--font-montserrat); /* body, buttons, tracked caps */
+  --font-display: var(--font-anton); /* heavy condensed headlines */
+  --font-script: var(--font-mrs-saint-delafield); /* signature accent word */
 
-  /* Warm palette sampled from the hero photography */
-  --color-sand: #e9d2a6;
-  --color-ink: #131209;
-  --color-ink-soft: #272727;
+  /* Colours sampled from design-references/images-with-text */
+  --color-cream: #f1cfa1; /* page background, sunlit wall */
+  --color-sand: #d2ad7f; /* surfaces, wall in shade */
+  --color-clay: #8b6643; /* muted details, large text only */
+  --color-copper: #a14b06; /* script accent, large text only */
+  --color-bark: #553720; /* body text, small caps */
+  --color-espresso: #491a01; /* headlines */
+  --color-ink: #131209; /* buttons, darkest text */
+  --color-ink-soft: #272727; /* button hover */
 
+  /* Motion */
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body {
-  background: var(--color-sand);
-  color: var(--color-ink);
+  background: var(--color-cream);
+  color: var(--color-bark);
   font-family: var(--font-sans);
 }
 
-/* ---------- Text styles (landing-page-design skill, B1) ---------- */
-@utility heading-1 {
-  font-size: var(--text-6xl);
-  line-height: var(--text-6xl--line-height);
-  font-weight: 600;
-}
-@utility heading-2 {
+/* ---------- 2. Text styles ---------- */
+/* Responsive: base size on mobile, larger from lg (64rem / 1024px). */
+
+/* Display: Anton, uppercase, tight. Headlines only. */
+@utility display-1 {
+  font-family: var(--font-display);
   font-size: var(--text-5xl);
-  line-height: var(--text-5xl--line-height);
-  font-weight: 600;
+  line-height: 0.9;
+  text-transform: uppercase;
+  @media (width >= 40rem) {
+    font-size: var(--text-6xl);
+  }
+  @media (width >= 64rem) {
+    font-size: var(--text-8xl);
+  }
 }
-@utility heading-3 {
+@utility display-2 {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  line-height: 0.9;
+  text-transform: uppercase;
+  @media (width >= 64rem) {
+    font-size: var(--text-7xl);
+  }
+}
+@utility display-3 {
+  font-family: var(--font-display);
   font-size: var(--text-4xl);
-  line-height: var(--text-4xl--line-height);
-  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  @media (width >= 64rem) {
+    font-size: var(--text-5xl);
+  }
 }
-@utility title-4 {
-  font-size: var(--text-sm);
-  line-height: var(--text-sm--line-height);
+
+/* Script: one or two accent words layered over a display headline. */
+@utility script-1 {
+  font-family: var(--font-script);
+  font-size: var(--text-7xl);
+  line-height: 1;
+  @media (width >= 64rem) {
+    font-size: var(--text-9xl);
+  }
+}
+@utility script-2 {
+  font-family: var(--font-script);
+  font-size: var(--text-5xl);
+  line-height: 1;
+  @media (width >= 64rem) {
+    font-size: var(--text-7xl);
+  }
+}
+
+/* Eyebrow: small tracked capitals for quotes, labels, section kickers. */
+@utility eyebrow {
+  font-size: var(--text-xs);
+  line-height: 1.7;
   font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  @media (width >= 64rem) {
+    font-size: var(--text-sm);
+  }
 }
-@utility body-3 {
+
+/* Body: Montserrat. */
+@utility body-lg {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+  font-weight: 400;
+}
+@utility body {
   font-size: var(--text-base);
   line-height: var(--text-base--line-height);
   font-weight: 400;
 }
-@utility body-6 {
+@utility body-sm {
   font-size: var(--text-sm);
   line-height: var(--text-sm--line-height);
   font-weight: 400;
 }
+@utility label {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  font-weight: 600;
+}
+
+/* Buttons */
 @utility button-md {
   font-size: var(--text-base);
   line-height: var(--text-base--line-height);
@@ -59,18 +131,8 @@ body {
   line-height: var(--text-sm--line-height);
   font-weight: 600;
 }
-@utility caption-1 {
-  font-size: var(--text-sm);
-  line-height: var(--text-sm--line-height);
-  font-weight: 500;
-}
-@utility caption-5 {
-  font-size: var(--text-xs);
-  line-height: var(--text-xs--line-height);
-  font-weight: 400;
-}
 
-/* ---------- Motion ---------- */
+/* ---------- 3. Motion ---------- */
 @keyframes reveal-up {
   from {
     opacity: 0;

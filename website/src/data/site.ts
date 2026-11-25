@@ -10,13 +10,16 @@ export const site = {
   email: "",
 
   hero: {
-    // Each inner array is one line, broken where the thought breaks.
-    headline: ["I build software", "that lasts."],
-    subheadline:
-      "Senior full stack engineer shipping web products end to end, from the data model to the last pixel.",
+    // SAMPLE COPY to preview the design system. Replace with final wording.
+    // Reads as one sentence: "Building software that lasts".
+    script: "Building",
+    // Each entry is one line, broken where the thought breaks.
+    display: ["Software", "that lasts"],
+    quotes: {
+      left: ["Clean code today.", "Fewer fires tomorrow."],
+      right: ["Systems are built", "one commit at a time."],
+    },
     cta: "Start a conversation",
-    // TODO: one proof signal, e.g. years of experience or a notable company. Hidden while null.
-    proof: null as string | null,
   },
 
   meta: {

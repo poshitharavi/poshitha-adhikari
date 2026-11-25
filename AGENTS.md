@@ -64,6 +64,8 @@ Planned (create as needed, inside `website/`): `src/components/sections/*` (one 
 
 ## 4. Visual direction (from `design-references/`)
 
+> **The design system is documented in [`website/DESIGN_SYSTEM.md`](website/DESIGN_SYSTEM.md). Read it before any UI work.** Tokens live in `website/src/app/globals.css`, components in `website/src/components/ui/`, live reference at `/style-guide`.
+
 The references define the mood: **"Building My Own Legacy"** — quiet discipline, ambition, warm and cinematic.
 
 - **Palette:** warm sand / beige wall (~`#E9CFA0`–`#F2DDB4`), deep espresso brown (~`#3B1E0F`–`#4A2412`) for headlines, burnt-orange/copper accent (~`#B5651D`), soft concrete floor tones. Golden-hour light with diagonal window-shadow streaks.
@@ -72,7 +74,11 @@ The references define the mood: **"Building My Own Legacy"** — quiet disciplin
 - **Motifs:** short quote blocks with thin rules and quotation marks; diagonal light-shadow overlay.
 - **Note:** the photos show a cap with a sports-team logo. If used on the live site, consider an edited/cropped version without the trademark.
 
-Exact tokens (colors, fonts, spacing) should be finalized and recorded in `globals.css` + the decision log below.
+**Brand fonts (set, in `website/src/app/layout.tsx`):** Anton = display headlines (uppercase), Mrs Saint Delafield = script accent word (copper), Montserrat = body, buttons and small tracked caps. Utilities: `font-display`, `font-script`, `font-sans`, plus `display-1`, `display-2`, `script-1`, `eyebrow` in `globals.css`.
+
+**Brand colours (sampled from the posters, Tailwind names):** `cream` #F1CFA1 · `sand` #D2AD7F · `clay` #8B6643 · `copper` #A14B06 · `bark` #553720 · `espresso` #491A01 · `ink` #131209.
+
+Live reference page: `/style-guide` (noindex) shows fonts, script alternatives and colour swatches.
 
 ## 5. Planned page structure (draft — confirm with the owner)
 
@@ -103,7 +109,8 @@ Exact tokens (colors, fonts, spacing) should be finalized and recorded in `globa
 - [x] This onboarding doc created.
 - [ ] Confirm content (bio, experience, projects, links) with the owner.
 - [x] Template code removed; design tokens, text styles (`heading-1`, `body-3`, …) and motion in `website/src/app/globals.css`.
-- [x] Hero is image only (owner's request): full screen art-directed background, wide photo ≥1024px, tall photo below. No visible text or nav; an `sr-only` h1 keeps it accessible. Content in `website/src/data/site.ts`.
+- [x] Hero: full screen art-directed background (wide photo ≥1024px, tall photo below) with poster-style SAMPLE copy (script "Building" + display "Software that lasts", side quotes on desktop). Copy in `website/src/data/site.ts` is placeholder, awaiting final wording. No nav or CTA yet.
+- [x] Design system: tokens, text styles, `ui/` components (Display, Script, Eyebrow, Text, Quote, Button), `DESIGN_SYSTEM.md`, `/style-guide`.
 - [ ] Contact email still TODO (`ContactButton` is kept for later sections and renders disabled until set).
 - [ ] Remaining sections (About, Skills, Experience, Projects, tagline reveal, Contact, Footer).
 - [ ] Polish, responsive QA, SEO metadata, deploy (likely Vercel).
@@ -124,4 +131,6 @@ Exact tokens (colors, fonts, spacing) should be finalized and recorded in `globa
 | 2026-11-25 | Layout: app lives in `website/`; root holds docs + `design-references/`. Git repo is at the root. |
 | 2026-11-25 | Design rules: follow the `landing-page-design` skill (Geist only, Tailwind scale, spacing tokens, no bg gradients, `cubic-bezier(0.22,1,0.36,1)` motion). Build section by section. |
 | 2026-11-25 | Hero: owner wants the image alone as the background, no overlaid text or nav for now. Hero is `min-h-svh`. |
+| 2026-11-25 | Fonts and colours taken from the poster images (owner's request). This overrides the landing-page-design skill's "one typeface / Geist" rule: three fonts are intentional. Script font may still change (alternatives on `/style-guide`). |
+| 2026-11-25 | Design system established (`website/DESIGN_SYSTEM.md`). Token change = update `globals.css` + doc + `/style-guide` in the same commit. |
 | 2026-11-25 | Visual direction taken from "Building My Own Legacy" references (warm sand + espresso + copper, condensed display + script). |

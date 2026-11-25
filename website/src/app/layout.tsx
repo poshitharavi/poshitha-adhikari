@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Anton, Montserrat, Mrs_Saint_Delafield } from "next/font/google";
 import { site } from "@/data/site";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist-sans",
+/* Brand fonts, matched to the "Building My Own Legacy" posters. */
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+});
+
+const anton = Anton({
+  variable: "--font-anton",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const script = Mrs_Saint_Delafield({
+  variable: "--font-mrs-saint-delafield",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -20,11 +33,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geist.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${montserrat.variable} ${anton.variable} ${script.variable} antialiased`}
+    >
       <body>
         <a
           href="#main"
-          className="button-sm fixed top-4 left-4 z-100 -translate-y-24 rounded-full bg-ink px-3 py-2 text-white transition duration-300 ease-out-expo focus:translate-y-0"
+          className="button-sm fixed top-4 left-4 z-100 -translate-y-24 rounded-full bg-ink px-3 py-2 text-cream transition duration-300 ease-out-expo focus:translate-y-0"
         >
           Skip to content
         </a>
