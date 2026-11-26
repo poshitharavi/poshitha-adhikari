@@ -1,8 +1,7 @@
 import { getImageProps } from "next/image";
 import { site } from "@/data/site";
-import { ScrollCue } from "./scroll-cue";
-import { SplitReveal, splitRevealEndMs } from "./ui/split-reveal";
-import { Display, Eyebrow, Script } from "./ui/typography";
+import { introText } from "@/lib/greeter";
+import { Greeter } from "./greeter";
 
 const alt =
   "A figure in a cap and hoodie sits with head bowed on a chair against a pale wall";
@@ -47,21 +46,12 @@ function HeroBackground() {
   );
 }
 
-const delay = (ms: number) => ({ "--reveal-delay": `${ms}ms` }) as React.CSSProperties;
-
-/** Entrance schedule: greeting writes on, the name builds letter by letter, then the role and scroll cue. */
-const GREETING_MS = 200;
-const NAME_START_MS = 700; // starts as the greeting finishes writing
-
 /**
- * Poster style hero in the empty wall above the figure: "Hi, I'm" writes itself on, the name
- * builds letter by letter, the role slides up after it, and a cue on the floor invites scrolling.
- * Min heights keep the text clear of the figure's head on short screens.
+ * Welcome hero in the empty wall above the figure: a cursor types a greeting and a short intro,
+ * then keeps greeting the visitor in other languages. The section links sit on the wall above it. Min heights keep the text clear of the figure's head on short screens.
  */
 export function Hero() {
-  const { greeting, name, role, scrollCue } = site.hero;
-  const nameDone = splitRevealEndMs(name, NAME_START_MS);
-  const typed = nameDone - 500; // role starts while the last letters settle
+  const { greetings, intro } = site.hero;
 
   return (
     <section
@@ -72,35 +62,17 @@ export function Hero() {
       <HeroBackground />
 
       <div className="flex flex-col items-center px-4 pt-24 text-center lg:pt-20">
-        <h1 id="hero-heading" className="flex flex-col items-center">
-          <span className="sr-only">
-            {greeting} {name.join(" ")}
-          </span>
-          <Script aria-hidden className="relative z-10 -mb-2 -rotate-3 lg:-mb-6">
-            {/* Writes itself on left to right, like a pen stroke. */}
-            <span className="write-on" style={delay(GREETING_MS)}>
-              <span>{greeting}</span>
-            </span>
-          </Script>
-          <Display aria-hidden as="span" level={1} className="block">
-            {/* Stacked on phones, one line on desktop so the text clears the figure's head. */}
-            <SplitReveal words={name} startMs={NAME_START_MS} className="flex flex-col items-center lg:block" />
-          </Display>
+        {/* Full text for screen readers and search; the typed version below is decorative. */}
+        <h1 id="hero-heading" className="sr-only">
+          {greetings[0].text}, I&apos;m {site.name}, a {site.role.toLowerCase()} based in Sri Lanka.
         </h1>
-        <Eyebrow className="mt-3 flex flex-col items-center lg:mt-4 lg:flex-row lg:gap-2">
-          <span className="mask-reveal" style={delay(typed + 150)}>
-            <span>{role[0]}</span>
-          </span>
-          <span aria-hidden className="reveal hidden lg:block" style={delay(typed + 230)}>
-            ·
-          </span>
-          <span className="mask-reveal" style={delay(typed + 230)}>
-            <span>{role[1]}</span>
-          </span>
-        </Eyebrow>
+        <Greeter greetings={greetings} intro={intro} />
+        <noscript>
+          <p className="display-1 text-espresso">{greetings[0].text},</p>
+          <p className="intro mt-4 text-espresso">{introText(intro)}</p>
+        </noscript>
       </div>
 
-      <ScrollCue label={scrollCue} style={delay(typed + 450)} />
     </section>
   );
 }

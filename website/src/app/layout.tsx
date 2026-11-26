@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Montserrat, Mrs_Saint_Delafield } from "next/font/google";
+import { Anton, Montserrat, Mrs_Saint_Delafield, Noto_Sans_Sinhala, Noto_Sans_Tamil } from "next/font/google";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -21,6 +21,19 @@ const script = Mrs_Saint_Delafield({
   subsets: ["latin"],
 });
 
+/* Sinhala and Tamil letters for the hero greeter (Anton has none); used as fallbacks in --font-display. */
+const sinhala = Noto_Sans_Sinhala({
+  variable: "--font-noto-sinhala",
+  weight: "700",
+  subsets: ["sinhala"],
+});
+
+const tamil = Noto_Sans_Tamil({
+  variable: "--font-noto-tamil",
+  weight: "700",
+  subsets: ["tamil"],
+});
+
 export const metadata: Metadata = {
   title: site.meta.title,
   description: site.meta.description,
@@ -35,7 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${anton.variable} ${script.variable} antialiased`}
+      className={`${montserrat.variable} ${anton.variable} ${script.variable} ${sinhala.variable} ${tamil.variable} antialiased`}
     >
       <body>
         <a

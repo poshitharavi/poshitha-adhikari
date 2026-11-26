@@ -42,7 +42,7 @@ Three fonts, each with one job:
 
 | Role | Font | CSS | Use |
 |---|---|---|---|
-| Display | **Anton** | `font-display` | Big uppercase headlines only |
+| Display | **Anton** (+ Noto Sans Sinhala / Tamil 700 as fallbacks for those scripts) | `font-display` | Big uppercase headlines only |
 | Script | **Mrs Saint Delafield** (may change, see `/style-guide`) | `font-script` | One or two accent words over a display headline |
 | Body | **Montserrat** | `font-sans` (default) | Everything else: body, buttons, eyebrows |
 
@@ -55,6 +55,7 @@ Mobile size → desktop size (from `lg`, 1024px). Always use these classes, or t
 | `display-1` | Anton, 48 → 60 (640px) → 96px, lh 0.9, uppercase | `<Display level={1}>` (hero only) |
 | `display-2` | Anton, 48 → 72px, lh 0.9, uppercase | `<Display level={2}>` (section titles) |
 | `display-3` | Anton, 36 → 48px, lh 1, uppercase | `<Display level={3}>` |
+| `intro` | Montserrat 500, 20/28 → 30/36 | hero sentence under the greeting |
 | `script-1` | Script, 72 → 128px | `<Script>` |
 | `script-2` | Script, 48 → 72px | `<Script level={2}>` |
 | `eyebrow` | Montserrat 500, 12 → 14px, tracking 0.08em, uppercase | `<Eyebrow>` |
@@ -93,9 +94,9 @@ Keep the script inside the same heading so screen readers read one sentence.
 | `Eyebrow` | `as` | Bark, tracked caps |
 | `Text` | `size` lg / md / sm, `as` | Bark, `text-pretty` |
 | `Quote` | children (use `<br />` for line breaks) | Poster quote with `“ ”` ornament rules |
-| `SplitReveal` | `words`, `startMs`, `className` | Letters slide up from behind each word with a small tilt (40ms stagger); letters lift on hover. Parent `aria-hidden`; give screen readers the full text. `splitRevealEndMs()` chains later reveals |
-| `ScrollCue` (`components/scroll-cue.tsx`) | `label`, `style` | Outlined circle with a looping down arrow + label in copper `{ }` brackets |
-| `SiteHeader` (`components/site-header.tsx`) | none | Transparent header on the hero (not sticky): only the `PillButton` "Download CV", top right |
+| `Greeter` (`components/greeter.tsx`, client) | `greetings`, `intro` | Hero: a copper cursor types the greeting and intro, then cycles the greeting through languages (data in `site.hero`). Timing in `lib/greeter.ts`. Decorative; the h1 carries the text |
+| `SiteNav` (`components/site-nav.tsx`, client) | `sections` | Section links printed on the wall: tracked caps in bark, no surface or border, underline draws in on hover. Top of the hero, scrolls away with it. Below 1024px: "Menu" text toggle and full height panel with staggered links |
+| `SectionStub` | `id`, `index`, `label` | Placeholder target for a nav link until the real section is built |
 | `PillButton` | `href`, `download`, children | Outlined hairline pill, `caps` label, `Plus` icon. Hover: label rolls up, "+" turns 90° |
 | `Plus` | `className` | Drawn "+" mark (pill button icon) |
 | `Button` | `href`, `variant` primary / secondary, `size` md / sm | No `href` renders disabled, so there are no dead links. Full hover, active and focus states |
@@ -112,9 +113,9 @@ Taken from the Lusion and GSAP style references (refero.design) the owner likes.
 
 - `caps` text style: 14px, weight 500, uppercase, -0.02em. Header, pill buttons, scroll cue.
 - `.mask-reveal`: text slides up from behind an invisible edge (900ms). Wrap the element; stagger with `--reveal-delay`.
-- `.write-on`: a script word writes itself on left to right like a pen stroke (1.2s, transform only). Hero "Hi, I'm".
-- `SplitReveal`: hero name, letter by letter (Lusion mask + GSAP style per letter split).
+- `Greeter` + `.typer-caret`: typed greeting with a copper cursor (solid while typing, blinking while waiting).
 - Pill hover: label roll + "+" quarter turn. Links: underline draws in.
-- `arrow-loop`: scroll cue arrow slides down through its circle (2.2s). `{ }` brackets are the GSAP signature for labels and section eyebrows.
+- `menu-link`: mobile menu links arrive 60ms apart. Smooth scrolling on anchor links (off under reduced motion).
+- Next, with the real sections: Zayla style scroll lit paragraphs (words light up as you scroll, B11) and headings rising letter by letter.
 - All of it falls back to a plain fade (or nothing) under reduced motion.
 - Kept from our brand, not taken from the references: colours, Anton / script / Montserrat fonts.

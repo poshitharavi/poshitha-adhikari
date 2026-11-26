@@ -34,7 +34,7 @@ The landing page is one scrolling page. This doc lists every section, in order, 
 ### 1. Hero
 - **Job:** who Poshitha is and the mood of the site, in five seconds.
 - **Content:** full screen photo (art directed desktop / mobile), headline in the signature composition (script word over display headline).
-- **Status:** built. "Hi, I'm" writes itself on like a pen stroke, the name builds letter by letter, role slides up, `{ Scroll to get to know me }` cue with a looping arrow at the bottom. Header: only the outlined "Download CV" pill, top right (old CV for now). No contact button or side quotes (owner removed them). Facts come from the owner's career history. Don't change it without the owner.
+- **Status:** built. Multilingual welcome: a cursor types "Hello," and "I'm a senior full stack engineer based in Sri Lanka!", then the greeting cycles through Sinhala, Tamil and other languages. Section links sit on the wall at the top (transparent, scroll away with the hero); no scroll prompt; every section below is a placeholder until built. No header or CV button (owner removed it); CV download to come back in Contact. No contact button or side quotes (owner removed them). Facts come from the owner's career history. Don't change it without the owner.
 
 ### 2. About
 - **Job:** the person behind the work: why Poshitha builds, how they think, what kind of engineer they are.
